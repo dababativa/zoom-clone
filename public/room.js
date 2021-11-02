@@ -1,5 +1,5 @@
 
-const socket = io("localhost:3000");
+const socket = io();
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 myVideo.muted = true;

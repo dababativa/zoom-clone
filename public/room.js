@@ -1,7 +1,7 @@
 // Prod
-// const socket = io();
+const socket = io();
 // Dev
-const socket = io('localhost:3000');
+// const socket = io('localhost:3000');
 const videoGrid = document.getElementById('video-grid')
 const myVideo = document.createElement('video')
 myVideo.muted = true;
@@ -15,9 +15,9 @@ var peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
     // Prod
-    // port: '443'
+    port: '443'
     // Dev
-    port: '3000'
+    // port: '3000'
 })
 
 let myVideoStream;

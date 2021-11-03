@@ -121,3 +121,8 @@ video {
 .unmute, .stop{ 
     color: red;
 }
+
+.join-left{
+    color: #6c757d;
+    font-style: italic;
+}

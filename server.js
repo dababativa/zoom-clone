@@ -20,15 +20,19 @@ app.get('/:room', (req, res) => {
 })
 
 io.on('connection', socket => {
-    socket.on('join-room', (roomId, userId)=>{
-        console.log(roomId)
+    socket.on('join-room', (roomId, userId, username)=>{
+        console.log(userId)
         socket.join(roomId);
-        socket.to(roomId).emit('user-connected', userId);
-        socket.on('message', message => {
-            io.to(roomId).emit('create-message', message)
+        socket.to(roomId).emit('user-connected', userId, username);
+        socket.on('message', (message, username) => {
+            io.to(roomId).emit('create-message', message, username)
         })
+        // socket.on('disconnect', ()=>{
+        //     console.log("user did leave", userId, username)
+        //     io.to(roomId).emit('user-disconnected', userId, username)
+        // })
     })
     
 })
 
-server.listen(process.env.PORT)
+server.listen(process.env.PORT || 3000)
